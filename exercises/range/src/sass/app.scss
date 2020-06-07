@@ -1,6 +1,42 @@
-@import '_variables';
-@import '_mixins';
+@import "_variables";
+@import "_mixins";
 
 input[type="range"] {
-  // Add your styles here
+  -webkit-appearance: none;
+  margin: 18px 0;
+  width: 100%;
+
+  @include track {
+    @include runnable-track;
+  }
+
+  @include thumb {
+    @include track-thumb;
+  }
+
+  @include focus {
+    &::-webkit-slider-runnable-track {
+      background: $dark-blue;
+    }
+
+    &::-ms-fill-lower {
+      background: $light-blue;
+    }
+
+    &::-ms-fill-upper {
+      background: $dark-blue;
+    }
+  }
+
+  &::-ms-track {
+    @include runnable-track(transparent, transparent, transparent);
+  }
+
+  &::-ms-fill-lower {
+    @include ms-fill($middle-blue);
+  }
+
+  &::-ms-fill-upper {
+    @include ms-fill($light-blue);
+  }
 }
