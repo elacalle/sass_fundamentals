@@ -1,0 +1,25 @@
+$sides: (
+  "l": "left",
+  "t": "top",
+  "r": "right",
+  "b": "bottom",
+);
+
+$types: (
+  "m": "margin",
+  "p": "padding",
+);
+
+@mixin generate($type, $type_name, $margin) {
+  @each $side, $side_name in $sides {
+    .#{$type}-#{$side}-#{$margin} {
+      #{$type_name}-#{$side_name}: #{$margin}px;
+    }
+  }
+}
+
+@for $i from 5 through 25 {
+  @each $type, $type_name in $types {
+    @include generate($type, $type_name, $i);
+  }
+}
