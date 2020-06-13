@@ -1,6 +1,19 @@
 body {
-    h1 {
+  h1 {
     color: #c69;
+  }
+}
+
+@mixin disabled {
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+@mixin price($color: #008000) {
+  .btn__price {
+    background: $color;
+    padding: 1px 3px;
   }
 }
 
@@ -10,4 +23,21 @@ body {
   border-width: 1px;
   line-height: 20px;
   border-radius: 2px;
+
+  &.btn--mode-primary {
+    color: white;
+    background: rgb(204, 68, 102);
+    @include disabled();
+  }
+
+  &.btn--mode-secondary {
+    background: rgb(237, 188, 200);
+    @include disabled();
+  }
+
+  @include price;
+
+  &:disabled {
+    @include price(#aaaaaa);
+  }
 }
